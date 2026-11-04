@@ -1,521 +1,785 @@
 <!doctype html>
 <html lang="id">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pusat Aktivitas Digital | Bermain Sambil Belajar Berpuasa</title>
-<meta name="description" content="Pusat aktivitas digital pendamping buku Bermain Sambil Belajar Berpuasa: audio, kuis, dan infografis untuk Adik-adik.">
-<meta name="theme-color" content="#CFE9F5">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="id_ID">
-<meta property="og:title" content="Pusat Aktivitas Digital | Bermain Sambil Belajar Berpuasa">
-<meta property="og:description" content="Pusat aktivitas digital pendamping buku Bermain Sambil Belajar Berpuasa: audio, kuis, dan infografis untuk Adik-adik.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.8l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5-6.2 3.5 1.4-7L1.8 9.1l7-.8z' fill='%23FFC42E' stroke='%23F0A000' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --cream: #FFFBF0;
-    --card: #FFFDF8;
-    --ink: #2B2118;
-    --ink-soft: #4A3D30;
-    --green-deep: #0B5A47;
-    --line: #F1E8D3;
-    --display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
-    --body: "Nunito", "Segoe UI", system-ui, sans-serif;
-  }
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Pusat Aktivitas Digital | Bermain Sambil Belajar Berpuasa</title>
+    <meta
+      name="description"
+      content="Pusat aktivitas digital pendamping buku Bermain Sambil Belajar Berpuasa: audio, kuis, dan infografis untuk Adik-adik."
+    />
+    <meta name="theme-color" content="#CFE9F5" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+    <meta
+      property="og:title"
+      content="Pusat Aktivitas Digital | Bermain Sambil Belajar Berpuasa"
+    />
+    <meta
+      property="og:description"
+      content="Pusat aktivitas digital pendamping buku Bermain Sambil Belajar Berpuasa: audio, kuis, dan infografis untuk Adik-adik."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.8l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5-6.2 3.5 1.4-7L1.8 9.1l7-.8z' fill='%23FFC42E' stroke='%23F0A000' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #fffbf0;
+        --card: #fffdf8;
+        --ink: #2b2118;
+        --ink-soft: #4a3d30;
+        --green-deep: #0b5a47;
+        --line: #f1e8d3;
+        --display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+        --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+      }
 
-  * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
 
-  html { -webkit-text-size-adjust: 100%; }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
 
-  body {
-    margin: 0;
-    background: var(--cream);
-    color: var(--ink);
-    font-family: var(--body);
-    font-weight: 600;
-    line-height: 1.4;
-  }
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: var(--body);
+        font-weight: 600;
+        line-height: 1.4;
+      }
 
-  .app {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
-    overflow: hidden;
-    background: var(--cream);
-  }
+      .app {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100dvh;
+        overflow: hidden;
+        background: var(--cream);
+      }
 
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
 
-  /* Ilustrasi utama */
-  .hero { display: block; }
+      /* Ilustrasi utama */
+      .hero {
+        display: block;
+      }
 
-  .hero img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1200 / 866;
-    object-fit: cover;
-  }
+      .hero img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1200 / 866;
+        object-fit: cover;
+      }
 
+      /* Pesan sambutan */
+      .welcome {
+        position: relative;
+        z-index: 1;
+        margin-top: -3px;
+        padding: 0 40px 18px;
+        background: var(--cream);
+        text-align: center;
+      }
 
-  /* Pesan sambutan */
-  .welcome {
-    position: relative;
-    z-index: 1;
-    margin-top: -3px;
-    padding: 0 40px 18px;
-    background: var(--cream);
-    text-align: center;
-  }
+      .cloud-edge {
+        position: absolute;
+        top: -20px;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 22px;
+        color: var(--cream);
+      }
 
-  .cloud-edge {
-    position: absolute;
-    top: -20px;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 22px;
-    color: var(--cream);
-  }
+      .welcome h2 {
+        margin: 0 0 4px;
+        padding-top: 4px;
+        color: var(--green-deep);
+        font-family: var(--display);
+        font-size: clamp(1.45rem, 6.2vw, 1.75rem);
+        font-weight: 800;
+        line-height: 1.15;
+      }
 
-  .welcome h2 {
-    margin: 0 0 4px;
-    padding-top: 4px;
-    color: var(--green-deep);
-    font-family: var(--display);
-    font-size: clamp(1.45rem, 6.2vw, 1.75rem);
-    font-weight: 800;
-    line-height: 1.15;
-  }
+      .welcome p {
+        margin: 0 auto;
+        max-width: 34ch;
+        color: var(--ink-soft);
+        font-size: 0.95rem;
+        line-height: 1.38;
+      }
 
-  .welcome p {
-    margin: 0 auto;
-    max-width: 34ch;
-    color: var(--ink-soft);
-    font-size: 0.95rem;
-    line-height: 1.38;
-  }
+      .welcome .star {
+        position: absolute;
+      }
+      .welcome .star-a {
+        left: 11px;
+        top: 62px;
+        width: 24px;
+      }
+      .welcome .star-b {
+        right: 10px;
+        top: 58px;
+        width: 26px;
+      }
+      .welcome .star-c {
+        right: 22px;
+        top: 96px;
+        width: 17px;
+      }
 
-  .welcome .star { position: absolute; }
-  .welcome .star-a { left: 11px; top: 62px; width: 24px; }
-  .welcome .star-b { right: 10px; top: 58px; width: 26px; }
-  .welcome .star-c { right: 22px; top: 96px; width: 17px; }
+      .nowrap {
+        white-space: nowrap;
+      }
 
-  .nowrap { white-space: nowrap; }
+      /* Daftar halaman buku */
+      .pages {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 9px;
+        margin: 0;
+        padding: 0 14px 12px;
+        list-style: none;
+      }
 
-  /* Daftar halaman buku */
-  .pages {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    gap: 9px;
-    margin: 0;
-    padding: 0 14px 12px;
-    list-style: none;
-  }
+      .page-link {
+        display: grid;
+        grid-template-columns: 88px minmax(0, 1fr) 38px;
+        gap: 14px;
+        align-items: center;
+        min-height: 92px;
+        padding: 7px 12px 7px 8px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--card);
+        color: inherit;
+        text-decoration: none;
+        transition:
+          transform 120ms ease,
+          border-color 120ms ease;
+      }
 
-  .page-link {
-    display: grid;
-    grid-template-columns: 88px minmax(0, 1fr) 38px;
-    gap: 14px;
-    align-items: center;
-    min-height: 92px;
-    padding: 7px 12px 7px 8px;
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    background: var(--card);
-    color: inherit;
-    text-decoration: none;
-    transition: transform 120ms ease, border-color 120ms ease;
-  }
+      .page-link:hover {
+        border-color: var(--accent);
+      }
+      .page-link:active {
+        transform: scale(0.98);
+      }
 
-  .page-link:hover { border-color: var(--accent); }
-  .page-link:active { transform: scale(0.98); }
+      .page-link:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 2px;
+      }
 
-  .page-link:focus-visible {
-    outline: 3px solid var(--accent);
-    outline-offset: 2px;
-  }
+      .tile {
+        display: grid;
+        place-items: center;
+        width: 88px;
+        height: 76px;
+        border-radius: 14px;
+        background: var(--tile);
+      }
 
-  .tile {
-    display: grid;
-    place-items: center;
-    width: 88px;
-    height: 76px;
-    border-radius: 14px;
-    background: var(--tile);
-  }
+      .tile img {
+        display: block;
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+      }
 
-  .tile img { display: block; width: 70px; height: 70px; object-fit: contain; }
+      .page-info {
+        min-width: 0;
+      }
 
-  .page-info { min-width: 0; }
+      .page-number {
+        display: block;
+        color: var(--accent);
+        font-family: var(--display);
+        font-size: 1.28rem;
+        font-weight: 800;
+        line-height: 1.1;
+      }
 
-  .page-number {
-    display: block;
-    color: var(--accent);
-    font-family: var(--display);
-    font-size: 1.28rem;
-    font-weight: 800;
-    line-height: 1.1;
-  }
+      .page-title {
+        display: block;
+        margin-top: 1px;
+        color: var(--ink);
+        font-size: 0.96rem;
+        font-weight: 700;
+        line-height: 1.16;
+      }
 
-  .page-title {
-    display: block;
-    margin-top: 1px;
-    color: var(--ink);
-    font-size: 0.96rem;
-    font-weight: 700;
-    line-height: 1.16;
-  }
+      .chip {
+        display: inline-block;
+        margin-top: 4px;
+        padding: 1px 10px 2px;
+        border-radius: 999px;
+        background: var(--chip);
+        color: #3b3024;
+        font-size: 0.78rem;
+        font-weight: 700;
+        line-height: 1.35;
+      }
 
-  .chip {
-    display: inline-block;
-    margin-top: 4px;
-    padding: 1px 10px 2px;
-    border-radius: 999px;
-    background: var(--chip);
-    color: #3B3024;
-    font-size: 0.78rem;
-    font-weight: 700;
-    line-height: 1.35;
-  }
+      .chip-sand {
+        --chip: #fbebc3;
+      }
+      .chip-mint {
+        --chip: #d3f0cc;
+      }
 
-  .chip-sand { --chip: #FBEBC3; }
-  .chip-mint { --chip: #D3F0CC; }
+      .go {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        justify-self: end;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+      }
 
-  .go {
-    display: grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
-    justify-self: end;
-    border-radius: 50%;
-    background: var(--accent);
-    color: #fff;
-  }
+      .go svg {
+        width: 16px;
+        height: 16px;
+      }
 
-  .go svg { width: 16px; height: 16px; }
+      .p-orange {
+        --accent: #d9480f;
+        --tile: #fcebc4;
+      }
+      .p-green {
+        --accent: #0b6b4f;
+        --tile: #d5f1cb;
+      }
+      .p-blue {
+        --accent: #1565c0;
+        --tile: #cfe8fb;
+      }
+      .p-purple {
+        --accent: #6a1fb5;
+        --tile: #e7d8fb;
+      }
+      .p-pink {
+        --accent: #d21f4c;
+        --tile: #fcd9dd;
+      }
+      .p-mint {
+        --accent: #067a58;
+        --tile: #cdf2dd;
+      }
 
-  .p-orange { --accent: #D9480F; --tile: #FCEBC4; }
-  .p-green  { --accent: #0B6B4F; --tile: #D5F1CB; }
-  .p-blue   { --accent: #1565C0; --tile: #CFE8FB; }
-  .p-purple { --accent: #6A1FB5; --tile: #E7D8FB; }
-  .p-pink   { --accent: #D21F4C; --tile: #FCD9DD; }
-  .p-mint   { --accent: #067A58; --tile: #CDF2DD; }
+      /* Pesan penutup */
+      .closing {
+        position: relative;
+        padding: 16px 58px 82px;
+        background: linear-gradient(#fffbf0, #fdf3d8);
+        text-align: center;
+      }
 
-  /* Pesan penutup */
-  .closing {
-    position: relative;
-    padding: 16px 58px 82px;
-    background: linear-gradient(#FFFBF0, #FDF3D8);
-    text-align: center;
-  }
+      .closing-kid {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 104px;
+        height: auto;
+        margin: 0 auto 6px;
+      }
 
-  .closing-kid {
-    position: relative;
-    z-index: 1;
-    display: block;
-    width: 104px;
-    height: auto;
-    margin: 0 auto 6px;
-  }
+      .closing p {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        color: var(--ink);
+        font-size: 0.86rem;
+        font-weight: 700;
+        line-height: 1.32;
+      }
 
-  .closing p {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    color: var(--ink);
-    font-size: 0.86rem;
-    font-weight: 700;
-    line-height: 1.32;
-  }
+      .scene {
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 150px;
+        height: 132px;
+      }
 
-  .scene {
-    position: absolute;
-    bottom: 0;
-    display: block;
-    width: 150px;
-    height: 132px;
-  }
+      .scene-left {
+        left: 0;
+      }
+      .scene-right {
+        right: 0;
+      }
 
-  .scene-left { left: 0; }
-  .scene-right { right: 0; }
+      /* Tablet dan desktop */
+      @media (min-width: 720px) {
+        .app {
+          display: grid;
+          grid-template-columns:
+            minmax(24px, 1fr)
+            minmax(0, 580px)
+            minmax(0, 580px)
+            minmax(24px, 1fr);
+          grid-template-rows: auto auto 1fr;
+          column-gap: clamp(24px, 4vw, 56px);
+          row-gap: clamp(24px, 3vw, 36px);
+          padding-top: clamp(24px, 3vw, 36px);
+        }
 
-  /* Tablet dan desktop */
-  @media (min-width: 720px) {
-    .app {
-      display: grid;
-      grid-template-columns:
-        minmax(24px, 1fr)
-        minmax(0, 580px)
-        minmax(0, 580px)
-        minmax(24px, 1fr);
-      grid-template-rows: auto auto 1fr;
-      column-gap: clamp(24px, 4vw, 56px);
-      row-gap: clamp(24px, 3vw, 36px);
-      padding-top: clamp(24px, 3vw, 36px);
-    }
+        .hero {
+          grid-column: 2;
+          grid-row: 1;
+        }
 
-    .hero { grid-column: 2; grid-row: 1; }
+        .hero img {
+          border-radius: 28px;
+        }
 
-    .hero img { border-radius: 28px; }
+        .welcome {
+          grid-column: 3;
+          grid-row: 1;
+          align-self: center;
+          margin-top: 0;
+          padding: 24px 0;
+          background: none;
+          text-align: left;
+        }
 
-    .welcome {
-      grid-column: 3;
-      grid-row: 1;
-      align-self: center;
-      margin-top: 0;
-      padding: 24px 0;
-      background: none;
-      text-align: left;
-    }
+        .cloud-edge {
+          display: none;
+        }
 
-    .cloud-edge { display: none; }
+        .welcome h2 {
+          margin-bottom: 12px;
+          font-size: clamp(2rem, 3.6vw, 3rem);
+          line-height: 1.1;
+        }
 
-    .welcome h2 {
-      margin-bottom: 12px;
-      font-size: clamp(2rem, 3.6vw, 3rem);
-      line-height: 1.1;
-    }
+        .welcome p {
+          margin: 0;
+          max-width: 42ch;
+          font-size: clamp(1rem, 1.5vw, 1.2rem);
+          line-height: 1.5;
+        }
 
-    .welcome p {
-      margin: 0;
-      max-width: 42ch;
-      font-size: clamp(1rem, 1.5vw, 1.2rem);
-      line-height: 1.5;
-    }
+        .welcome .star-a {
+          left: auto;
+          right: 74px;
+          top: -16px;
+          width: 24px;
+        }
+        .welcome .star-b {
+          right: 34px;
+          top: -30px;
+          width: 32px;
+        }
+        .welcome .star-c {
+          right: 8px;
+          top: 6px;
+          width: 18px;
+        }
 
-    .welcome .star-a { left: auto; right: 74px; top: -16px; width: 24px; }
-    .welcome .star-b { right: 34px; top: -30px; width: 32px; }
-    .welcome .star-c { right: 8px; top: 6px; width: 18px; }
+        .pages {
+          grid-column: 2 / 4;
+          grid-row: 2;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-auto-rows: 1fr;
+          gap: 16px;
+          padding: 0;
+        }
 
-    .pages {
-      grid-column: 2 / 4;
-      grid-row: 2;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-auto-rows: 1fr;
-      gap: 16px;
-      padding: 0;
-    }
+        .page-link {
+          height: 100%;
+          grid-template-columns: 96px minmax(0, 1fr) 38px;
+          padding: 10px 14px 10px 10px;
+        }
 
-    .page-link {
-      height: 100%;
-      grid-template-columns: 96px minmax(0, 1fr) 38px;
-      padding: 10px 14px 10px 10px;
-    }
+        .tile {
+          width: 96px;
+          height: 88px;
+        }
+        .tile img {
+          width: 80px;
+          height: 80px;
+        }
+        .page-number {
+          font-size: 1.4rem;
+        }
+        .page-title {
+          font-size: 1.02rem;
+        }
+        .chip {
+          font-size: 0.82rem;
+        }
+        .go {
+          width: 38px;
+          height: 38px;
+        }
 
-    .tile { width: 96px; height: 88px; }
-    .tile img { width: 80px; height: 80px; }
-    .page-number { font-size: 1.4rem; }
-    .page-title { font-size: 1.02rem; }
-    .chip { font-size: 0.82rem; }
-    .go { width: 38px; height: 38px; }
+        .closing {
+          grid-column: 1 / -1;
+          grid-row: 3;
+          display: grid;
+          place-items: center;
+          align-self: end;
+          min-height: clamp(150px, 17vw, 240px);
+          padding: 24px clamp(170px, 24vw, 340px);
+        }
 
-    .closing {
-      grid-column: 1 / -1;
-      grid-row: 3;
-      display: grid;
-      place-items: center;
-      align-self: end;
-      min-height: clamp(150px, 17vw, 240px);
-      padding: 24px clamp(170px, 24vw, 340px);
-    }
+        .closing p {
+          max-width: 46ch;
+          font-size: 1.05rem;
+          line-height: 1.4;
+        }
 
-    .closing p { max-width: 46ch; font-size: 1.05rem; line-height: 1.4; }
+        .scene {
+          width: clamp(170px, 22vw, 280px);
+          height: auto;
+          aspect-ratio: 150 / 132;
+        }
+      }
 
-    .scene {
-      width: clamp(170px, 22vw, 280px);
-      height: auto;
-      aspect-ratio: 150 / 132;
-    }
-  }
+      @media (min-width: 720px) and (max-width: 899px) {
+        .welcome .star-a {
+          display: none;
+        }
+        .welcome .star-b {
+          right: 26px;
+          top: 0;
+          width: 26px;
+        }
+        .welcome .star-c {
+          right: 4px;
+          top: 30px;
+          width: 16px;
+        }
+      }
 
-  @media (min-width: 720px) and (max-width: 899px) {
-    .welcome .star-a { display: none; }
-    .welcome .star-b { right: 26px; top: 0; width: 26px; }
-    .welcome .star-c { right: 4px; top: 30px; width: 16px; }
-  }
+      @media (min-width: 1080px) {
+        .pages {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
 
-  @media (min-width: 1080px) {
-    .pages { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  }
+      @media (max-width: 359px) {
+        .welcome {
+          padding-inline: 32px;
+        }
+        .page-link {
+          grid-template-columns: 72px minmax(0, 1fr) 34px;
+          gap: 10px;
+        }
+        .tile {
+          width: 72px;
+          height: 68px;
+        }
+        .tile img {
+          width: 60px;
+          height: 60px;
+        }
+        .welcome .star-a,
+        .welcome .star-b {
+          width: 19px;
+        }
+        .welcome .star-a {
+          left: 7px;
+        }
+        .welcome .star-b {
+          right: 7px;
+        }
+        .welcome .star-c {
+          display: none;
+        }
+        .closing {
+          padding-inline: 48px;
+        }
+        .scene {
+          width: 120px;
+          height: 106px;
+        }
+      }
 
-  @media (max-width: 359px) {
-    .welcome { padding-inline: 32px; }
-    .page-link { grid-template-columns: 72px minmax(0, 1fr) 34px; gap: 10px; }
-    .tile { width: 72px; height: 68px; }
-    .tile img { width: 60px; height: 60px; }
-    .welcome .star-a, .welcome .star-b { width: 19px; }
-    .welcome .star-a { left: 7px; }
-    .welcome .star-b { right: 7px; }
-    .welcome .star-c { display: none; }
-    .closing { padding-inline: 48px; }
-    .scene { width: 120px; height: 106px; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .page-link { transition: none; }
-    .page-link:active { transform: none; }
-  }
-</style>
-</head>
-<body>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="star" viewBox="0 0 24 24">
-      <path d="M12 1.8l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5-6.2 3.5 1.4-7L1.8 9.100l7-.8z" fill="#FFC42E" stroke="#F0A000" stroke-width="1.2" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="chevron" viewBox="0 0 16 16">
-      <path d="M5.5 2.500L11 8l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="palm" viewBox="0 0 100 130">
-      <path d="M44 128 C47 96 52 66 60 44 L68 47 C60 70 56 98 56 128 Z" fill="#9A5B2A"/>
-      <g fill="#1F8A6B">
-        <path d="M64 44 C50 20 26 16 8 30 C26 28 46 32 64 44Z"/>
-        <path d="M64 44 C44 40 22 46 12 66 C28 54 46 48 64 44Z"/>
-        <path d="M64 44 C58 22 66 6 84 2 C76 16 72 28 64 44Z"/>
-      </g>
-      <g fill="#2FA67F">
-        <path d="M64 44 C74 26 90 22 98 34 C86 32 76 36 64 44Z"/>
-        <path d="M64 44 C78 42 92 52 94 68 C84 56 74 50 64 44Z"/>
-        <path d="M64 44 C50 34 34 32 22 38 C36 40 50 42 64 44Z"/>
-      </g>
-    </symbol>
-  </defs>
-</svg>
-
-<main class="app">
-
-  <header class="hero">
-    <h1 class="sr-only">Bermain Sambil Belajar Berpuasa: Pusat Aktivitas Digital</h1>
-    <img src="gambar/sampul.webp" width="1200" height="866" alt="Tiga anak bersorak gembira di depan masjid, dengan judul Bermain Sambil Belajar Berpuasa dan label Pusat Aktivitas Digital.">
-  </header>
-
-  <section class="welcome" aria-labelledby="sambutan">
-    <svg class="cloud-edge" viewBox="0 0 480 22" preserveAspectRatio="none" aria-hidden="true">
-      <path fill="currentColor" d="M0 22V16C14 4 34 4 48 12C60 0 88 0 102 10C112 8 124 8 132 8H348C356 8 368 8 378 10C392 0 420 0 432 12C446 4 466 4 480 16V22Z"/>
+      @media (prefers-reduced-motion: reduce) {
+        .page-link {
+          transition: none;
+        }
+        .page-link:active {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <defs>
+        <symbol id="star" viewBox="0 0 24 24">
+          <path
+            d="M12 1.8l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5-6.2 3.5 1.4-7L1.8 9.100l7-.8z"
+            fill="#FFC42E"
+            stroke="#F0A000"
+            stroke-width="1.2"
+            stroke-linejoin="round"
+          />
+        </symbol>
+        <symbol id="chevron" viewBox="0 0 16 16">
+          <path
+            d="M5.5 2.500L11 8l-5.5 5.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </symbol>
+        <symbol id="palm" viewBox="0 0 100 130">
+          <path
+            d="M44 128 C47 96 52 66 60 44 L68 47 C60 70 56 98 56 128 Z"
+            fill="#9A5B2A"
+          />
+          <g fill="#1F8A6B">
+            <path d="M64 44 C50 20 26 16 8 30 C26 28 46 32 64 44Z" />
+            <path d="M64 44 C44 40 22 46 12 66 C28 54 46 48 64 44Z" />
+            <path d="M64 44 C58 22 66 6 84 2 C76 16 72 28 64 44Z" />
+          </g>
+          <g fill="#2FA67F">
+            <path d="M64 44 C74 26 90 22 98 34 C86 32 76 36 64 44Z" />
+            <path d="M64 44 C78 42 92 52 94 68 C84 56 74 50 64 44Z" />
+            <path d="M64 44 C50 34 34 32 22 38 C36 40 50 42 64 44Z" />
+          </g>
+        </symbol>
+      </defs>
     </svg>
-    <svg class="star star-a" viewBox="0 0 24 24" aria-hidden="true"><use href="#star"/></svg>
-    <svg class="star star-b" viewBox="0 0 24 24" aria-hidden="true"><use href="#star"/></svg>
-    <svg class="star star-c" viewBox="0 0 24 24" aria-hidden="true"><use href="#star"/></svg>
-    <h2 id="sambutan">Selamat datang, <span class="nowrap">Adik-adik!</span></h2>
-    <p>Di sini ada teman belajar yang bisa diakses bersama Abi atau Umi. Pilih halaman buku yang ingin Adik-adik pelajari, lalu dengarkan, kerjakan, atau baca <span class="nowrap">bersama-sama!</span></p>
-  </section>
 
-  <ul class="pages">
+    <main class="app">
+      <header class="hero">
+        <h1 class="sr-only">
+          Bermain Sambil Belajar Berpuasa: Pusat Aktivitas Digital
+        </h1>
+        <img
+          src="gambar/sampul.webp"
+          width="1200"
+          height="866"
+          alt="Tiga anak bersorak gembira di depan masjid, dengan judul Bermain Sambil Belajar Berpuasa dan label Pusat Aktivitas Digital."
+        />
+      </header>
 
-    <li class="p-orange">
-      <a class="page-link" href="halaman-4.html">
-        <span class="tile"><img src="gambar/ikon-halaman-4.webp" width="240" height="240" alt=""></span>
-        <span class="page-info">
-          <span class="page-number">Halaman 4</span>
-          <span class="page-title">Mengapa Kita Wajib Berpuasa?</span>
-          <span class="chip chip-sand">Audio Edukasi</span>
-        </span>
-        <span class="go" aria-hidden="true"><svg viewBox="0 0 16 16"><use href="#chevron"/></svg></span>
-      </a>
-    </li>
+      <section class="welcome" aria-labelledby="sambutan">
+        <svg
+          class="cloud-edge"
+          viewBox="0 0 480 22"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            fill="currentColor"
+            d="M0 22V16C14 4 34 4 48 12C60 0 88 0 102 10C112 8 124 8 132 8H348C356 8 368 8 378 10C392 0 420 0 432 12C446 4 466 4 480 16V22Z"
+          />
+        </svg>
+        <svg class="star star-a" viewBox="0 0 24 24" aria-hidden="true">
+          <use href="#star" />
+        </svg>
+        <svg class="star star-b" viewBox="0 0 24 24" aria-hidden="true">
+          <use href="#star" />
+        </svg>
+        <svg class="star star-c" viewBox="0 0 24 24" aria-hidden="true">
+          <use href="#star" />
+        </svg>
+        <h2 id="sambutan">
+          Selamat datang, <span class="nowrap">Adik-adik!</span>
+        </h2>
+        <p>
+          Di sini ada teman belajar yang bisa diakses bersama Abi atau Umi.
+          Pilih halaman buku yang ingin Adik-adik pelajari, lalu dengarkan,
+          kerjakan, atau baca <span class="nowrap">bersama-sama!</span>
+        </p>
+      </section>
 
-    <li class="p-green">
-      <a class="page-link" href="halaman-8.html">
-        <span class="tile"><img src="gambar/ikon-halaman-8.webp" width="240" height="240" alt=""></span>
-        <span class="page-info">
-          <span class="page-number">Halaman 8</span>
-          <span class="page-title">Yuk, Belajar Puasa!</span>
-          <span class="chip chip-mint">Kuis Interaktif</span>
-        </span>
-        <span class="go" aria-hidden="true"><svg viewBox="0 0 16 16"><use href="#chevron"/></svg></span>
-      </a>
-    </li>
+      <ul class="pages">
+        <li class="p-orange">
+          <a class="page-link" href="halaman-4.html">
+            <span class="tile"
+              ><img
+                src="gambar/ikon-halaman-4.webp"
+                width="240"
+                height="240"
+                alt=""
+            /></span>
+            <span class="page-info">
+              <span class="page-number">Halaman 4</span>
+              <span class="page-title">Mengapa Kita Wajib Berpuasa?</span>
+              <span class="chip chip-sand">Audio Edukasi</span>
+            </span>
+            <span class="go" aria-hidden="true"
+              ><svg viewBox="0 0 16 16"><use href="#chevron" /></svg
+            ></span>
+          </a>
+        </li>
 
-    <li class="p-blue">
-      <a class="page-link" href="halaman-12.html">
-        <span class="tile"><img src="gambar/ikon-halaman-12.webp" width="240" height="240" alt=""></span>
-        <span class="page-info">
-          <span class="page-number">Halaman 12</span>
-          <span class="page-title">Belajar Al-Qur'an di Bulan Ramadan</span>
-          <span class="chip chip-sand">Audio Edukasi</span>
-        </span>
-        <span class="go" aria-hidden="true"><svg viewBox="0 0 16 16"><use href="#chevron"/></svg></span>
-      </a>
-    </li>
+        <li class="p-green">
+          <a class="page-link" href="halaman-8.html">
+            <span class="tile"
+              ><img
+                src="gambar/ikon-halaman-8.webp"
+                width="240"
+                height="240"
+                alt=""
+            /></span>
+            <span class="page-info">
+              <span class="page-number">Halaman 8</span>
+              <span class="page-title">Yuk, Belajar Puasa!</span>
+              <span class="chip chip-mint">Kuis Interaktif</span>
+            </span>
+            <span class="go" aria-hidden="true"
+              ><svg viewBox="0 0 16 16"><use href="#chevron" /></svg
+            ></span>
+          </a>
+        </li>
 
-    <li class="p-purple">
-      <a class="page-link" href="halaman-15-16.html">
-        <span class="tile"><img src="gambar/ikon-halaman-15-16.webp" width="240" height="240" alt=""></span>
-        <span class="page-info">
-          <span class="page-number nowrap">Halaman 15&ndash;16</span>
-          <span class="page-title">Mengenal Qailulah</span>
-          <span class="chip chip-sand">Infografis Praktis</span>
-        </span>
-        <span class="go" aria-hidden="true"><svg viewBox="0 0 16 16"><use href="#chevron"/></svg></span>
-      </a>
-    </li>
+        <li class="p-blue">
+          <a class="page-link" href="halaman-12.html">
+            <span class="tile"
+              ><img
+                src="gambar/ikon-halaman-12.webp"
+                width="240"
+                height="240"
+                alt=""
+            /></span>
+            <span class="page-info">
+              <span class="page-number">Halaman 12</span>
+              <span class="page-title">Belajar Al-Qur'an di Bulan Ramadan</span>
+              <span class="chip chip-sand">Audio Edukasi</span>
+            </span>
+            <span class="go" aria-hidden="true"
+              ><svg viewBox="0 0 16 16"><use href="#chevron" /></svg
+            ></span>
+          </a>
+        </li>
 
-    <li class="p-pink">
-      <a class="page-link" href="halaman-20.html">
-        <span class="tile"><img src="gambar/ikon-halaman-20.webp" width="240" height="240" alt=""></span>
-        <span class="page-info">
-          <span class="page-number">Halaman 20</span>
-          <span class="page-title">Kuis Pengetahuan Ramadan</span>
-          <span class="chip chip-mint">Kuis Interaktif</span>
-        </span>
-        <span class="go" aria-hidden="true"><svg viewBox="0 0 16 16"><use href="#chevron"/></svg></span>
-      </a>
-    </li>
+        <li class="p-purple">
+          <a class="page-link" href="halaman-15-16.html">
+            <span class="tile"
+              ><img
+                src="gambar/ikon-halaman-15-16.webp"
+                width="240"
+                height="240"
+                alt=""
+            /></span>
+            <span class="page-info">
+              <span class="page-number nowrap">Halaman 15&ndash;16</span>
+              <span class="page-title">Mengenal Qailulah</span>
+              <span class="chip chip-sand">Infografis Praktis</span>
+            </span>
+            <span class="go" aria-hidden="true"
+              ><svg viewBox="0 0 16 16"><use href="#chevron" /></svg
+            ></span>
+          </a>
+        </li>
 
-    <li class="p-mint">
-      <a class="page-link" href="halaman-22.html">
-        <span class="tile"><img src="gambar/ikon-halaman-22.webp" width="240" height="240" alt=""></span>
-        <span class="page-info">
-          <span class="page-number">Halaman 22</span>
-          <span class="page-title">Doa Berbuka Puasa</span>
-          <span class="chip chip-mint">Infografis Praktis</span>
-        </span>
-        <span class="go" aria-hidden="true"><svg viewBox="0 0 16 16"><use href="#chevron"/></svg></span>
-      </a>
-    </li>
+        <li class="p-pink">
+          <a class="page-link" href="halaman-20.html">
+            <span class="tile"
+              ><img
+                src="gambar/ikon-halaman-20.webp"
+                width="240"
+                height="240"
+                alt=""
+            /></span>
+            <span class="page-info">
+              <span class="page-number">Halaman 20</span>
+              <span class="page-title">Kuis Pengetahuan Ramadan</span>
+              <span class="chip chip-mint">Kuis Interaktif</span>
+            </span>
+            <span class="go" aria-hidden="true"
+              ><svg viewBox="0 0 16 16"><use href="#chevron" /></svg
+            ></span>
+          </a>
+        </li>
 
-  </ul>
+        <li class="p-mint">
+          <a class="page-link" href="halaman-22.html">
+            <span class="tile"
+              ><img
+                src="gambar/ikon-halaman-22.webp"
+                width="240"
+                height="240"
+                alt=""
+            /></span>
+            <span class="page-info">
+              <span class="page-number">Halaman 22</span>
+              <span class="page-title">Doa Berbuka Puasa</span>
+              <span class="chip chip-mint">Infografis Praktis</span>
+            </span>
+            <span class="go" aria-hidden="true"
+              ><svg viewBox="0 0 16 16"><use href="#chevron" /></svg
+            ></span>
+          </a>
+        </li>
+      </ul>
 
-  <footer class="closing">
-    <svg class="scene scene-left" viewBox="0 0 150 132" aria-hidden="true">
-      <use href="#palm" x="-18" y="6" width="74" height="100"/>
-      <g fill="#F4CB7D" stroke="#D9A24A" stroke-width="1">
-        <path d="M30 108V82c0-2 1-4 2-5l1.5-7 1.5 7c1 1 2 3 2 5v26z"/>
-        <rect x="46" y="92" width="42" height="18"/>
-        <path d="M50 92c0-9 8-11 13-15l4-7 4 7c5 4 13 6 13 15z"/>
-      </g>
-      <path d="M61 110v-9c0-6 12-6 12 0v9z" fill="#6FB35A"/>
-      <path d="M0 132V104c18-12 44-8 62 6 26-6 62 4 88 22z" fill="#8CCB63"/>
-      <path d="M0 132v-16c20-8 40-4 58 16z" fill="#4C9A44"/>
-      <use href="#star" x="92" y="74" width="20" height="20"/>
-    </svg>
-    <svg class="scene scene-right" viewBox="0 0 150 132" aria-hidden="true">
-      <g transform="translate(150 0) scale(-1 1)"><use href="#palm" x="-18" y="6" width="74" height="100"/></g>
-      <use href="#palm" x="30" y="84" width="30" height="38"/>
-      <path d="M150 132V104c-18-12-44-8-62 6-26-6-62 4-88 22z" fill="#8CCB63"/>
-      <path d="M150 132v-16c-20-8-40-4-58 16z" fill="#4C9A44"/>
-      <use href="#star" x="36" y="62" width="22" height="22"/>
-    </svg>
-    <img class="closing-kid" src="assets/maskot.webp" width="420" height="515" alt="">
-    <p>Semoga aktivitas ini menjadi penyemangat bagi <span class="nowrap">Adik-adik</span> untuk semakin mencintai puasa. Selamat belajar!</p>
-  </footer>
-
-</main>
-
-</body>
+      <footer class="closing">
+        <svg class="scene scene-left" viewBox="0 0 150 132" aria-hidden="true">
+          <use href="#palm" x="-18" y="6" width="74" height="100" />
+          <g fill="#F4CB7D" stroke="#D9A24A" stroke-width="1">
+            <path d="M30 108V82c0-2 1-4 2-5l1.5-7 1.5 7c1 1 2 3 2 5v26z" />
+            <rect x="46" y="92" width="42" height="18" />
+            <path d="M50 92c0-9 8-11 13-15l4-7 4 7c5 4 13 6 13 15z" />
+          </g>
+          <path d="M61 110v-9c0-6 12-6 12 0v9z" fill="#6FB35A" />
+          <path
+            d="M0 132V104c18-12 44-8 62 6 26-6 62 4 88 22z"
+            fill="#8CCB63"
+          />
+          <path d="M0 132v-16c20-8 40-4 58 16z" fill="#4C9A44" />
+          <use href="#star" x="92" y="74" width="20" height="20" />
+        </svg>
+        <svg class="scene scene-right" viewBox="0 0 150 132" aria-hidden="true">
+          <g transform="translate(150 0) scale(-1 1)">
+            <use href="#palm" x="-18" y="6" width="74" height="100" />
+          </g>
+          <use href="#palm" x="30" y="84" width="30" height="38" />
+          <path
+            d="M150 132V104c-18-12-44-8-62 6-26-6-62 4-88 22z"
+            fill="#8CCB63"
+          />
+          <path d="M150 132v-16c-20-8-40-4-58 16z" fill="#4C9A44" />
+          <use href="#star" x="36" y="62" width="22" height="22" />
+        </svg>
+        <img
+          class="closing-kid"
+          src="assets/maskot.webp"
+          width="420"
+          height="515"
+          alt=""
+        />
+        <p>
+          Semoga aktivitas ini menjadi penyemangat bagi
+          <span class="nowrap">Adik-adik</span> untuk semakin mencintai puasa.
+          Selamat belajar!
+        </p>
+      </footer>
+    </main>
+  </body>
 </html>
