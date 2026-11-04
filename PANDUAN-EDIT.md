@@ -1,6 +1,6 @@
 # Panduan Mengedit
 
-Semua file bisa dibuka dengan editor teks biasa (VS Code atau Notepad). Tidak perlu install apa pun; buka `halaman_utama.html` di browser untuk melihat hasilnya.
+Semua file bisa dibuka dengan editor teks biasa (VS Code atau Notepad). Tidak perlu install apa pun; buka `index.html` di browser untuk melihat hasilnya.
 
 ## Menaruh file sendiri
 

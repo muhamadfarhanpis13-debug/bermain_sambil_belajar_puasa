@@ -513,7 +513,7 @@
         '<div class="stars" role="img" aria-label="' + stars + ' dari 3 bintang">' + starHtml + "</div>" +
         '<h3 tabindex="-1"></h3><p class="result-text"></p><p class="result-best"></p>' +
         '<button class="btn-primary restart" type="button"></button>' +
-        '<a class="btn-ghost" href="halaman_utama.html"></a>' +
+        '<a class="btn-ghost" href="index.html"></a>' +
         "</div>";
       var title = stage.querySelector("h3");
       title.textContent = stars === 3 ? TEKS.hasil3 : stars === 2 ? TEKS.hasil2 : TEKS.hasil1;
