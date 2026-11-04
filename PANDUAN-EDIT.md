@@ -7,13 +7,14 @@ Semua file bisa dibuka dengan editor teks biasa (VS Code atau Notepad). Tidak pe
 | Yang diganti | Simpan di | Nama file |
 |---|---|---|
 | Rekaman suara | `audio/` | `halaman-4.mp3`, `halaman-8.mp3`, `halaman-12.mp3` |
-| Gambar tokoh di atas tiap halaman | `gambar/` | `halaman-4.png`, `halaman-8.png`, `halaman-12.png`, `halaman-15-16.png`, `halaman-20.png`, `halaman-22.png` |
+| Gambar di atas tiap halaman | `gambar/` | `halaman-4.png`, `halaman-8.png`, `halaman-12.png`, `halaman-15-16.png`, `halaman-20.png`, `halaman-22.png` |
 | Maskot di kotak jawaban kuis | `gambar/` | `maskot.png` |
 | Gambar sampul halaman utama | `gambar/` | `sampul.webp` (timpa file yang ada) |
+| Ikon kartu di halaman utama | `gambar/` | `ikon-halaman-4.webp`, `ikon-halaman-8.webp`, dan seterusnya (timpa file yang ada; persegi, sekitar 240 × 240 piksel) |
 
 - File yang belum ada tidak membuat halaman rusak. Rekaman yang belum ada diganti suara otomatis perangkat; gambar yang belum ada diganti potongan gambar sampul.
-- Gambar tokoh paling bagus berlatar transparan (PNG atau WebP), tegak, kira-kira 330 × 384 piksel atau kelipatannya. Gambar ditampilkan utuh di pojok kanan bawah.
-- Maskot ditampilkan dalam lingkaran, jadi pakai gambar persegi dengan wajah di tengah.
+- Gambar atas halaman tampil utuh selebar halaman. Paling pas berukuran mendatar dengan perbandingan sekitar 4 : 3 (misalnya 1600 × 1156 piksel); perbandingan lain tetap tampil utuh, hanya diberi tepi langit biru.
+- Maskot ditampilkan utuh, tidak dipotong. Pakai gambar berlatar transparan dengan sedikit ruang kosong di sekelilingnya.
 - Format atau nama lain juga boleh, asal ditulis di halamannya:
   - rekaman: atribut `data-audio="audio/..."` pada kartu pemutar;
   - gambar tokoh: atribut `data-img="gambar/..."` pada `act-hero-art` (di bagian atas halaman);
@@ -39,4 +40,4 @@ Semua file bisa dibuka dengan editor teks biasa (VS Code atau Notepad). Tidak pe
 - **`answer` dihitung dari 0**: `0` = pilihan pertama, `1` = pilihan kedua, dan seterusnya.
 - **Jangan ganti `data-key`**: itu nama penyimpanan nilai kuis, catatan mengaji, dan tanda hafal di browser. Kalau diganti, catatan lama tidak terbaca lagi.
 - **Menu atas dan tombol Sebelumnya/Berikutnya** ditulis di tiap halaman. Kalau urutan halaman berubah, ubah di semua halaman yang bersangkutan.
-- **`assets/hero.webp`** adalah cadangan untuk potongan gambar. Biarkan saja; untuk mengganti gambar pakai folder `gambar/`.
+- **`assets/hero-scene.webp` dan `assets/maskot.webp`** adalah gambar bawaan: pemandangan di atas tiap halaman aktivitas, dan anak menunjuk di kotak jawaban kuis, layar hasil kuis, serta bagian bawah halaman utama. Keduanya ditampilkan utuh, tidak dipotong. Untuk mengganti per halaman pakai `gambar/halaman-*.png`; untuk maskot pakai `gambar/maskot.png`.

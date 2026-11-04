@@ -509,6 +509,7 @@
       for (var i = 0; i < 3; i++) starHtml += '<span class="' + (i < stars ? "" : "off") + '">' + ICON.star + "</span>";
       stage.innerHTML =
         '<div class="result">' +
+        '<span class="mascot" aria-hidden="true"></span>' +
         '<div class="stars" role="img" aria-label="' + stars + ' dari 3 bintang">' + starHtml + "</div>" +
         '<h3 tabindex="-1"></h3><p class="result-text"></p><p class="result-best"></p>' +
         '<button class="btn-primary restart" type="button"></button>' +
