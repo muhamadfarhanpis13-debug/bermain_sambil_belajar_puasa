@@ -17,7 +17,10 @@
     // Nilai kuis minimal (dalam persen) untuk mendapat 2 bintang. 3 bintang = semua benar.
     duaBintang: 60,
     // Lama tidur siang yang terpilih saat halaman dibuka (menit).
-    tidurSiangAwal: 20
+    tidurSiangAwal: 20,
+    // Pola getar HP saat waktu tidur siang habis (milidetik: getar, jeda, getar, ...).
+    // Hanya di HP Android; iPhone tidak mendukung getar dari halaman web.
+    getarBangun: [500, 250, 500, 250, 1000]
   };
 
   var TEKS = {
@@ -34,15 +37,14 @@
 
     // Kuis
     benar: "Betul, Adik-adik!",
-    salah: "Belum tepat, coba lagi ya!",
-    petunjukUmum: "Ayo, coba pilih jawaban yang lain.",
+    salah: "Tidak apa-apa, Adik-adik.",
     lanjut: "Lanjut ke Pertanyaan {n}",
     lihatHasil: "Lihat Hasil",
     selesai: "Selesai",
     hasil3: "MasyaAllah, hebat sekali!",
     hasil2: "Bagus sekali!",
     hasil1: "Terus semangat belajar, ya!",
-    hasilKalimat: "Adik-adik menjawab {benar} dari {jumlah} pertanyaan dengan benar pada percobaan pertama.",
+    hasilKalimat: "Adik-adik menjawab {benar} dari {jumlah} pertanyaan dengan benar.",
     nilaiTerbaik: "Nilai terbaik: {nilai} dari {jumlah}",
     ulangiKuis: "Ulangi Kuis",
     kembali: "Kembali ke Daftar",
@@ -370,15 +372,32 @@
   }
 
   /* ---------- Kuis ----------
-     Jawaban salah boleh dicoba lagi; nilai dihitung dari jawaban benar
-     pada percobaan pertama. */
+     Satu kali menjawab per soal. Kalau belum tepat, jawaban yang benar
+     ditunjukkan bersama umpan baliknya. */
+
+  // "A" -> 0, "B" -> 1, dan seterusnya.
+  function kunciKeUrutan(kunci) {
+    return String(kunci).trim().toUpperCase().charCodeAt(0) - 65;
+  }
+
+  // Kalimat pertama umpan balik menjadi judul, sisanya isi.
+  function pisahJudul(teks) {
+    var m = /^(.+?[.!?])\s+([\s\S]+)$/.exec((teks || "").trim());
+    return m ? [m[1], m[2]] : [teks || "", ""];
+  }
   function initQuiz(section) {
     var countEl = section.querySelector(".quiz-count");
     var body = section.querySelector(".quiz-body");
     var qs;
     try {
-      qs = JSON.parse(section.querySelector(".quiz-data").textContent).questions;
+      qs = JSON.parse(section.querySelector(".quiz-data").textContent).soal;
       if (!qs.length) throw new Error("kosong");
+      qs.forEach(function (q, i) {
+        q.urutanKunci = kunciKeUrutan(q.kunci);
+        if (!q.pertanyaan || !q.pilihan || !(q.urutanKunci >= 0 && q.urutanKunci < q.pilihan.length)) {
+          throw new Error("soal ke-" + (i + 1) + " belum lengkap atau kuncinya tidak ada di pilihan");
+        }
+      });
     } catch (e) {
       // Biasanya karena koma atau tanda kutip yang hilang saat soal diedit.
       body.textContent = TEKS.soalRusak;
@@ -388,6 +407,9 @@
     }
     var n = qs.length;
     var uid = section.id || "kuis";
+    // data-coba-lagi: jawaban salah tidak membuka kunci, anak memilih lagi sampai benar.
+    var cobaLagi = section.hasAttribute("data-coba-lagi");
+    var pernahSalah = false;
 
     var stage = document.createElement("div");
     var live = document.createElement("div");
@@ -404,7 +426,6 @@
 
     var current = 0;
     var score = 0;
-    var missed = false;
 
     function renderDots() {
       dotsEl.textContent = "";
@@ -418,7 +439,7 @@
 
     function showQuestion(index, moveFocus) {
       current = index;
-      missed = false;
+      pernahSalah = false;
       var q = qs[index];
       countEl.textContent = index + 1 + " dari " + n;
 
@@ -428,22 +449,31 @@
       num.className = "q-num";
       num.setAttribute("aria-hidden", "true");
       num.textContent = index + 1;
+      var qBody = document.createElement("div");
+      qBody.className = "q-body";
+      if (q.judul) {
+        var topic = document.createElement("p");
+        topic.className = "q-topic";
+        topic.textContent = q.judul;
+        qBody.appendChild(topic);
+      }
       var title = document.createElement("h3");
       title.className = "q-text";
       title.id = uid + "-soal";
       title.tabIndex = -1;
-      title.textContent = q.text;
-      head.append(num, title);
+      title.textContent = q.pertanyaan;
+      qBody.appendChild(title);
+      head.append(num, qBody);
 
       var opts = document.createElement("div");
       opts.className = "opts";
       opts.setAttribute("role", "group");
       opts.setAttribute("aria-labelledby", title.id);
-      q.options.forEach(function (label, i) {
+      q.pilihan.forEach(function (label, i) {
         var b = document.createElement("button");
         b.type = "button";
         b.className = "opt";
-        b.innerHTML = '<span class="dot" aria-hidden="true"></span>';
+        b.innerHTML = '<span class="dot" aria-hidden="true">' + String.fromCharCode(65 + i) + "</span>";
         var t = document.createElement("span");
         t.textContent = label;
         b.appendChild(t);
@@ -459,12 +489,24 @@
       if (moveFocus) title.focus();
     }
 
-    function feedback(ok, msg) {
+    function feedback(ok, teks) {
+      var bagian = pisahJudul(teks);
       live.innerHTML =
         '<div class="feedback ' + (ok ? "ok" : "bad") + '">' +
         '<span class="mascot" aria-hidden="true"></span>' +
-        "<div><h3>" + (ok ? TEKS.benar : TEKS.salah) + "</h3><p></p></div></div>";
-      live.querySelector("p").textContent = msg;
+        "<div><h3></h3><p></p></div></div>";
+      // Kata berstrip seperti "Adik-adik" tidak dipotong di tengah.
+      var h3 = live.querySelector("h3");
+      (bagian[0] || (ok ? TEKS.benar : TEKS.salah)).split(/(\S*-\S*)/).forEach(function (part) {
+        if (part.indexOf("-") === -1) { h3.append(part); return; }
+        var w = document.createElement("span");
+        w.className = "nowrap";
+        w.textContent = part;
+        h3.appendChild(w);
+      });
+      var p = live.querySelector("p");
+      if (bagian[1]) p.textContent = bagian[1];
+      else p.remove();
     }
 
     function mark(btn, label) {
@@ -476,24 +518,32 @@
 
     function choose(btn, i) {
       var q = qs[current];
-      if (i === q.answer) {
-        btn.classList.add("is-correct");
-        mark(btn, "jawaban benar");
-        stage.querySelectorAll(".opt").forEach(function (o) { o.disabled = true; });
-        if (!missed) score++;
-        feedback(true, q.explain);
-        nextBtn.innerHTML = "<span>" + (current < n - 1 ? isi(TEKS.lanjut, { n: current + 2 }) : TEKS.lihatHasil) + "</span>" + ICON.arrow;
-        nextBtn.hidden = false;
-        nextBtn.focus();
-      } else {
-        missed = true;
-        btn.classList.add("is-wrong");
+      var opts = stage.querySelectorAll(".opt");
+      var ok = i === q.urutanKunci;
+      if (!ok && cobaLagi) {
+        // Hanya pilihan ini yang dikunci; jawaban benar belum ditunjukkan.
+        pernahSalah = true;
         btn.disabled = true;
+        btn.classList.add("is-wrong");
         mark(btn, "belum tepat");
-        feedback(false, q.hint || TEKS.petunjukUmum);
-        var other = stage.querySelector(".opt:not(:disabled)");
-        if (other) other.focus();
+        feedback(false, q.jikaBelumTepat);
+        stage.querySelector(".opt:not(:disabled)").focus();
+        return;
       }
+      opts.forEach(function (o) { o.disabled = true; });
+      opts[q.urutanKunci].classList.add("is-correct");
+      mark(opts[q.urutanKunci], "jawaban benar");
+      if (ok) {
+        // Nilai hanya dihitung kalau benar pada percobaan pertama.
+        if (!pernahSalah) score++;
+      } else {
+        btn.classList.add("is-wrong");
+        mark(btn, "jawabanmu, belum tepat");
+      }
+      feedback(ok, ok ? q.jikaBenar : q.jikaBelumTepat);
+      nextBtn.innerHTML = "<span>" + (current < n - 1 ? isi(TEKS.lanjut, { n: current + 2 }) : TEKS.lihatHasil) + "</span>" + ICON.arrow;
+      nextBtn.hidden = false;
+      nextBtn.focus();
     }
 
     function showResult() {
@@ -664,14 +714,38 @@
       });
     }
 
+    // Layar dibiarkan menyala selama timer berjalan; kalau layar mati, browser
+    // menghentikan hitungan dan bunyi.
+    var lock = null;
+    function keepAwake() {
+      if (!navigator.wakeLock || lock) return;
+      navigator.wakeLock.request("screen").then(function (l) {
+        lock = l;
+        l.addEventListener("release", function () { lock = null; });
+      }).catch(function () {});
+    }
+    function letSleep() {
+      if (lock) lock.release().catch(function () {});
+      lock = null;
+    }
+
     function tick() {
       var ms = endAt - Date.now();
       if (ms <= 0) finish();
       else render(ms);
     }
 
+    // Kembali ke halaman: kunci layar lagi, dan bunyikan alarm kalau waktunya sudah lewat.
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState !== "visible" || !running) return;
+      if (ctx && ctx.state === "suspended") ctx.resume();
+      keepAwake();
+      tick();
+    });
+
     function start() {
       unlockSound();
+      keepAwake();
       endAt = Date.now() + leftMs;
       running = true;
       root.classList.remove("is-done");
@@ -685,6 +759,7 @@
       leftMs = Math.max(0, endAt - Date.now());
       running = false;
       clearInterval(timer);
+      letSleep();
       status.textContent = TEKS.dijeda;
       ui();
     }
@@ -697,6 +772,8 @@
       root.classList.add("is-done");
       status.textContent = TEKS.bangun;
       chime();
+      if (navigator.vibrate) navigator.vibrate(SETELAN.getarBangun);
+      letSleep();
       ui();
     }
 
@@ -708,6 +785,7 @@
     resetBtn.addEventListener("click", function () {
       running = false;
       clearInterval(timer);
+      letSleep();
       leftMs = totalMs;
       root.classList.remove("is-done");
       status.textContent = "";
@@ -718,8 +796,6 @@
     choices.forEach(function (c) {
       c.addEventListener("click", function () { choose(+c.getAttribute("data-min")); });
     });
-
-    document.addEventListener("visibilitychange", function () { if (running) tick(); });
 
     choose(SETELAN.tidurSiangAwal);
   }

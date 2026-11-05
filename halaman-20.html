@@ -11,7 +11,7 @@
     </title>
     <meta
       name="description"
-      content="Kuis interaktif lima pertanyaan tentang bulan Ramadan."
+      content="Kuis interaktif tentang bulan Ramadan."
     />
     <meta name="theme-color" content="#CFE9F5" />
     <link
@@ -55,7 +55,7 @@
           <h1>Kuis Pengetahuan <span class="hl">Ramadan</span></h1>
           <p>
             Seberapa banyak yang sudah Adik-adik ketahui tentang bulan Ramadan?
-            Jawab lima pertanyaan ini bersama Abi atau Umi, yuk!
+            Jawab pertanyaan berikut bersama Abi atau Umi, yuk!
           </p>
         </div>
         <div
@@ -70,6 +70,7 @@
           class="card quiz"
           id="kuis-halaman-20"
           aria-labelledby="judul-kuis"
+          data-coba-lagi
         >
           <div class="quiz-head">
             <span class="quiz-icon" aria-hidden="true">
@@ -95,7 +96,7 @@
               <h2 id="judul-kuis">Kuis Interaktif</h2>
               <p class="card-sub">Pilih jawaban yang benar, ya!</p>
             </div>
-            <span class="quiz-count">1 dari 5</span>
+            <span class="quiz-count">1 dari 3</span>
           </div>
           <div class="quiz-body">
             <noscript
@@ -103,67 +104,48 @@
               lalu muat ulang halaman.</noscript
             >
           </div>
-          <!-- Soal kuis. "text" = pertanyaan, "options" = pilihan jawaban,
-           "answer" = urutan jawaban benar dihitung dari 0 (0 = pilihan pertama),
-           "explain" = penjelasan saat benar, "hint" = petunjuk saat salah.
-           Soal boleh ditambah atau dikurangi; jangan lupa koma di antara soal. -->
+          <!-- SOAL KUIS — isi sesuai naskah. Setiap soal berisi:
+             "judul"          = judul soal (boleh dikosongkan),
+             "pertanyaan"     = teks pertanyaan,
+             "pilihan"        = daftar jawaban; otomatis diberi huruf A, B, C, ...,
+             "kunci"          = huruf jawaban yang benar, misalnya "A",
+             "jikaBenar"      = umpan balik jika benar,
+             "jikaBelumTepat" = umpan balik jika belum tepat.
+             Kalimat pertama umpan balik tampil sebagai judul kotak (misalnya "Betul, Adik-adik!").
+             Mode menjawab diatur di tag <section class="card quiz"> di atas:
+             tanpa data-coba-lagi = satu kali jawab, lalu jawaban benar ditunjukkan;
+             dengan data-coba-lagi = anak memilih lagi sampai benar.
+             Soal boleh ditambah atau dikurangi; jangan lupa koma di antara soal. -->
           <script type="application/json" class="quiz-data">
             {
-              "questions": [
+              "soal": [
                 {
-                  "text": "Ut labore et dolore magna aliqua, sed do eiusmod tempor 4?",
-                  "options": [
-                    "Lorem ipsum dolor sit amet",
-                    "Consectetur adipiscing elit",
-                    "Sed do eiusmod tempor incididunt"
+                  "judul": "Kegiatan Bermanfaat",
+                  "pertanyaan": "Kegiatan apa yang bermanfaat dilakukan saat berpuasa?",
+                  "pilihan": [
+                    "Berenang",
+                    "Bermain layangan",
+                    "Membaca buku kisah nabi"
                   ],
-                  "answer": 1,
-                  "explain": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                  "hint": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris?"
+                  "kunci": "C",
+                  "jikaBenar": "Masyaallah, hebat! Membaca kisah para nabi bisa memberi kita pelajaran baik.",
+                  "jikaBelumTepat": "Belum tepat, Adik-adik. Yuk, kita pilih kegiatan yang baik dan aman sesuai kemampuan. Coba lagi, ya!"
                 },
                 {
-                  "text": "Ut enim ad minim veniam, sed do eiusmod tempor 5?",
-                  "options": [
-                    "Ut labore et dolore magna aliqua",
-                    "Ut enim ad minim veniam",
-                    "Quis nostrud exercitation ullamco"
-                  ],
-                  "answer": 0,
-                  "explain": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                  "hint": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris?"
+                  "judul": "Bulan Hijriyah",
+                  "pertanyaan": "Bulan Hijriyah apa yang datang setelah Ramadhan?",
+                  "pilihan": ["Syawal", "Rabiulawal", "Safar"],
+                  "kunci": "A",
+                  "jikaBenar": "Betul sekali! Setelah Ramadhan, datang bulan Syawwal. Alhamdulillah!",
+                  "jikaBelumTepat": "Belum tepat, Adik-adik. Yuk, ingat kembali urutan bulan Hijriyah sebelum dan sesudah Ramadhan. Coba lagi, ya!"
                 },
                 {
-                  "text": "Quis nostrud exercitation ullamco, sed do eiusmod tempor 6?",
-                  "options": [
-                    "Duis aute irure dolor",
-                    "In reprehenderit in voluptate",
-                    "Velit esse cillum dolore"
-                  ],
-                  "answer": 2,
-                  "explain": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                  "hint": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris?"
-                },
-                {
-                  "text": "Duis aute irure dolor, sed do eiusmod tempor 7?",
-                  "options": [
-                    "Excepteur sint occaecat cupidatat",
-                    "Lorem ipsum dolor sit amet",
-                    "Consectetur adipiscing elit"
-                  ],
-                  "answer": 0,
-                  "explain": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                  "hint": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris?"
-                },
-                {
-                  "text": "In reprehenderit in voluptate, sed do eiusmod tempor 8?",
-                  "options": [
-                    "Sed do eiusmod tempor incididunt",
-                    "Ut labore et dolore magna aliqua",
-                    "Ut enim ad minim veniam"
-                  ],
-                  "answer": 1,
-                  "explain": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                  "hint": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris?"
+                  "judul": "Al-Qur’an",
+                  "pertanyaan": "Pada bulan apakah Al-Qur’an diturunkan?",
+                  "pilihan": ["Rajab", "Ramadhan", "Rabiulakhir"],
+                  "kunci": "B",
+                  "jikaBenar": "Masyaallah, hebat! Ramadhan adalah bulan diturunkannya Al-Qur’an. Semoga kita semakin semangat belajar Al-Qur’an!",
+                  "jikaBelumTepat": "Belum tepat, Adik-adik. Yuk, ingat kembali bulan istimewa ketika Al-Qur’an diturunkan. Coba lagi, ya!"
                 }
               ]
             }

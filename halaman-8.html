@@ -146,6 +146,7 @@
           class="card quiz"
           id="kuis-halaman-8"
           aria-labelledby="judul-kuis"
+          data-coba-lagi
         >
           <div class="quiz-head">
             <span class="quiz-icon" aria-hidden="true">
@@ -187,45 +188,47 @@
               lalu muat ulang halaman.</noscript
             >
           </div>
-          <!-- Soal kuis. "text" = pertanyaan, "options" = pilihan jawaban,
-           "answer" = urutan jawaban benar dihitung dari 0 (0 = pilihan pertama),
-           "explain" = penjelasan saat benar, "hint" = petunjuk saat salah.
-           Soal boleh ditambah atau dikurangi; jangan lupa koma di antara soal. -->
+          <!-- SOAL KUIS — isi sesuai naskah. Setiap soal berisi:
+             "judul"          = judul soal (boleh dikosongkan),
+             "pertanyaan"     = teks pertanyaan,
+             "pilihan"        = daftar jawaban; otomatis diberi huruf A, B, C, ...,
+             "kunci"          = huruf jawaban yang benar, misalnya "A",
+             "jikaBenar"      = umpan balik jika benar,
+             "jikaBelumTepat" = umpan balik jika belum tepat.
+             Kalimat pertama umpan balik tampil sebagai judul kotak (misalnya "Betul, Adik-adik!").
+             Mode menjawab diatur di tag <section class="card quiz"> di atas:
+             tanpa data-coba-lagi = satu kali jawab, lalu jawaban benar ditunjukkan;
+             dengan data-coba-lagi = anak memilih lagi sampai benar.
+             Soal boleh ditambah atau dikurangi; jangan lupa koma di antara soal. -->
           <script type="application/json" class="quiz-data">
             {
-              "questions": [
+              "soal": [
                 {
-                  "text": "Lorem ipsum dolor sit amet, sed do eiusmod tempor 1?",
-                  "options": [
-                    "Consectetur adipiscing elit",
-                    "Sed do eiusmod tempor incididunt",
-                    "Ut labore et dolore magna aliqua"
-                  ],
-                  "answer": 0,
-                  "explain": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                  "hint": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris?"
+                  "judul": "Syarat Wajib Puasa",
+                  "pertanyaan": "Adik-adik, mana yang termasuk syarat wajib puasa?",
+                  "pilihan": ["Beragama Islam", "Berniat"],
+                  "kunci": "A",
+                  "jikaBenar": "Betul, Adik-adik! Beragama Islam termasuk syarat wajib puasa. Kalau berniat, itu termasuk rukun puasa. Yuk, belajar membedakannya bersama Abi atau Umi!",
+                  "jikaBelumTepat": "Tidak apa-apa, Adik-adik. Beragama Islam termasuk syarat wajib puasa. Kalau berniat, itu termasuk rukun puasa. Yuk, kita pelajari bersama!"
                 },
                 {
-                  "text": "Consectetur adipiscing elit, sed do eiusmod tempor 2?",
-                  "options": [
-                    "Ut enim ad minim veniam",
-                    "Quis nostrud exercitation ullamco",
-                    "Duis aute irure dolor"
-                  ],
-                  "answer": 2,
-                  "explain": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                  "hint": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris?"
+                  "judul": "Niat dalam Puasa",
+                  "pertanyaan": "Saat akan berpuasa, kita berniat. Niat termasuk syarat wajib atau rukun puasa?",
+                  "pilihan": ["Syarat wajib puasa", "Rukun puasa"],
+                  "kunci": "B",
+                  "jikaBenar": "Betul, Adik-adik! Niat termasuk salah satu rukun puasa. Yuk, belajar bersama Abi atau Umi tentang arti niat!",
+                  "jikaBelumTepat": "Belum tepat, tidak apa-apa. Niat termasuk salah satu rukun puasa. Yuk, kita belajar bersama Abi atau Umi!"
                 },
                 {
-                  "text": "Sed do eiusmod tempor incididunt, sed do eiusmod tempor 3?",
-                  "options": [
-                    "In reprehenderit in voluptate",
-                    "Velit esse cillum dolore",
-                    "Excepteur sint occaecat cupidatat"
+                  "judul": "Waktu Menahan Diri",
+                  "pertanyaan": "Kapan kita mulai menahan diri dari hal-hal yang membatalkan puasa?",
+                  "pilihan": [
+                    "Dari terbit fajar sampai terbenam matahari",
+                    "Dari pagi sampai waktu Zuhur"
                   ],
-                  "answer": 1,
-                  "explain": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                  "hint": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris?"
+                  "kunci": "A",
+                  "jikaBenar": "Betul, Adik-adik! Kita mulai menahan diri sejak terbit fajar hingga terbenam matahari. Abi atau Umi bisa membantu Adik-adik mengenali waktu tersebut.",
+                  "jikaBelumTepat": "Tidak apa-apa, Adik-adik. Kita mulai menahan diri sejak terbit fajar hingga terbenam matahari. Yuk, belajar bersama Abi atau Umi!"
                 }
               ]
             }

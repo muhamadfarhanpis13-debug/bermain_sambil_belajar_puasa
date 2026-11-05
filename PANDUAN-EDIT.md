@@ -26,18 +26,22 @@ Semua file bisa dibuka dengan editor teks biasa (VS Code atau Notepad). Tidak pe
 |---|---|
 | Judul, paragraf, langkah-langkah, ayat, doa | Langsung di file `halaman-*.html` |
 | Naskah penjelasan (dibacakan suara otomatis) | `<p class="transcript-text">` di Halaman 4, 8, 12. Samakan dengan isi rekaman |
-| Soal kuis | Blok `quiz-data` di Halaman 8 dan 20 (petunjuknya ada di atas blok itu) |
+| Soal kuis dan umpan baliknya | Blok `quiz-data` di Halaman 8 dan 20, dengan isian `judul`, `pertanyaan`, `pilihan`, `kunci`, `jikaBenar`, `jikaBelumTepat` (petunjuknya ada di atas blok itu) |
 | Doa yang dihafal | Baris bertanda `data-words` di Halaman 22 |
 | Pilihan lama tidur siang | `data-min="15"` dan seterusnya di Halaman 15–16 |
 | Jumlah hari pencatat mengaji | `data-days="30"` di Halaman 12 |
 | Teks tombol dan pesan (misalnya "Betul, Adik-adik!") | Bagian **PENGATURAN** di atas `assets/aktivitas.js` |
-| Kecepatan suara, syarat 2 bintang, lama tidur siang awal | Bagian **PENGATURAN** di atas `assets/aktivitas.js` |
+| Kecepatan suara, syarat 2 bintang, lama tidur siang awal, pola getar alarm tidur siang | Bagian **PENGATURAN** di atas `assets/aktivitas.js` |
 | Warna | Variabel di bagian atas `assets/aktivitas.css` |
 
 ## Hati-hati
 
 - **Soal kuis**: setiap teks diapit tanda kutip `"..."`, dan antarsoal dipisah koma. Kalau ada yang terlewat, kuis menampilkan pesan "Soal kuis belum bisa ditampilkan".
-- **`answer` dihitung dari 0**: `0` = pilihan pertama, `1` = pilihan kedua, dan seterusnya.
+- **`kunci` ditulis dengan huruf**, sama seperti di naskah: `"A"` = pilihan pertama, `"B"` = pilihan kedua, dan seterusnya.
+- **Umpan balik**: kalimat pertama `jikaBenar` / `jikaBelumTepat` tampil sebagai judul kotak (misalnya "Betul, Adik-adik!"), sisanya sebagai isi.
+- **Mode menjawab** dipilih per halaman lewat tag `<section class="card quiz">`:
+  - tanpa `data-coba-lagi`: anak menjawab satu kali; kalau belum tepat, jawaban yang benar langsung ditandai. Cocok untuk umpan balik yang menyebutkan jawabannya.
+  - dengan `data-coba-lagi` (dipakai Halaman 8 dan 20): kalau belum tepat, pilihan itu dikunci dan anak memilih lagi sampai benar; jawaban tidak dibocorkan. Cocok untuk umpan balik "Coba lagi, ya!". Nilai hanya dihitung kalau benar pada percobaan pertama.
 - **Jangan ganti `data-key`**: itu nama penyimpanan nilai kuis, catatan mengaji, dan tanda hafal di browser. Kalau diganti, catatan lama tidak terbaca lagi.
 - **Menu atas dan tombol Sebelumnya/Berikutnya** ditulis di tiap halaman. Kalau urutan halaman berubah, ubah di semua halaman yang bersangkutan.
 - **`assets/hero-scene.webp` dan `assets/maskot.webp`** adalah gambar bawaan: pemandangan di atas tiap halaman aktivitas, dan anak menunjuk di kotak jawaban kuis, layar hasil kuis, serta bagian bawah halaman utama. Keduanya ditampilkan utuh, tidak dipotong. Untuk mengganti per halaman pakai `gambar/halaman-*.png`; untuk maskot pakai `gambar/maskot.png`.
