@@ -6,7 +6,7 @@ Semua file bisa dibuka dengan editor teks biasa (VS Code atau Notepad). Tidak pe
 
 | Yang diganti | Simpan di | Nama file |
 |---|---|---|
-| Rekaman suara | `audio/` | `halaman-4.mp3`, `halaman-8.mp3`, `halaman-12.mp3` |
+| Rekaman suara | `audio/` | `halaman-4.mpeg`, `halaman-8.mpeg`, `halaman-12.mpeg`, `halaman-15-16.mpeg`, `halaman-20.mpeg`, `halaman-22.mpeg` (boleh juga `.mp3` dengan nama yang sama) |
 | Gambar di atas tiap halaman | `gambar/` | `halaman-4.png`, `halaman-8.png`, `halaman-12.png`, `halaman-15-16.png`, `halaman-20.png`, `halaman-22.png` |
 | Maskot di kotak jawaban kuis | `gambar/` | `maskot.png` |
 | Gambar sampul halaman utama | `gambar/` | `sampul.webp` (timpa file yang ada) |
@@ -25,7 +25,7 @@ Semua file bisa dibuka dengan editor teks biasa (VS Code atau Notepad). Tidak pe
 | Yang diubah | Tempatnya |
 |---|---|
 | Judul, paragraf, langkah-langkah, ayat, doa | Langsung di file `halaman-*.html` |
-| Naskah penjelasan (dibacakan suara otomatis) | `<p class="transcript-text">` di Halaman 4, 8, 12. Samakan dengan isi rekaman |
+| Naskah penjelasan (dibacakan suara otomatis) | `<p class="transcript-text">` di setiap halaman. Samakan dengan isi rekaman |
 | Soal kuis dan umpan baliknya | Blok `quiz-data` di Halaman 8 dan 20, dengan isian `judul`, `pertanyaan`, `pilihan`, `kunci`, `jikaBenar`, `jikaBelumTepat` (petunjuknya ada di atas blok itu) |
 | Doa yang dihafal | Baris bertanda `data-words` di Halaman 22 |
 | Pilihan lama tidur siang | `data-min="15"` dan seterusnya di Halaman 15–16 |

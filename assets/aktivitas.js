@@ -155,7 +155,10 @@
   function initPlayer(card) {
     var mount = card.querySelector("[data-player]");
     var note = card.querySelector(".player-note");
-    var src = card.getAttribute("data-audio");
+    // Boleh beberapa berkas dipisah koma; dicoba berurutan sampai ada yang terbaca.
+    var srcs = (card.getAttribute("data-audio") || "").split(",")
+      .map(function (s) { return s.trim(); })
+      .filter(Boolean);
     var textEl = card.querySelector(".transcript-text");
     var text = textEl ? textEl.textContent.replace(/\s+/g, " ").trim() : "";
 
@@ -231,10 +234,11 @@
           showNote(TEKS.rekamanRusak);
           return;
         }
+        if (srcs.length) { audio.src = srcs.shift(); return; }
         audio = null;
         useSpeech();
       });
-      audio.src = src;
+      audio.src = srcs.shift();
     }
 
     function useSpeech() {
@@ -367,7 +371,7 @@
     onOtherSound(card, function () { if (playing) pause(); });
 
     setPlaying(false);
-    if (src) useFile();
+    if (srcs.length) useFile();
     else useSpeech();
   }
 
