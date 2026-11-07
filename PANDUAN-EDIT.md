@@ -12,7 +12,7 @@ Semua file bisa dibuka dengan editor teks biasa (VS Code atau Notepad). Tidak pe
 | Gambar sampul halaman utama | `gambar/` | `sampul.webp` (timpa file yang ada) |
 | Ikon kartu di halaman utama | `gambar/` | `ikon-halaman-4.webp`, `ikon-halaman-8.webp`, dan seterusnya (timpa file yang ada; persegi, sekitar 240 × 240 piksel) |
 
-- File yang belum ada tidak membuat halaman rusak. Rekaman yang belum ada diganti suara otomatis perangkat; gambar yang belum ada diganti potongan gambar sampul.
+- File yang belum ada tidak membuat halaman rusak. Rekaman yang belum ada diganti suara otomatis perangkat (hanya di halaman yang masih punya teks penjelasan; Halaman 4, 8, 12 sudah tidak memakainya, jadi pemutarnya menampilkan pesan); gambar yang belum ada diganti potongan gambar sampul.
 - Gambar atas halaman tampil utuh selebar halaman. Paling pas berukuran mendatar dengan perbandingan sekitar 4 : 3 (misalnya 1600 × 1156 piksel); perbandingan lain tetap tampil utuh, hanya diberi tepi langit biru.
 - Maskot ditampilkan utuh, tidak dipotong. Pakai gambar berlatar transparan dengan sedikit ruang kosong di sekelilingnya.
 - Format atau nama lain juga boleh, asal ditulis di halamannya:
@@ -25,7 +25,7 @@ Semua file bisa dibuka dengan editor teks biasa (VS Code atau Notepad). Tidak pe
 | Yang diubah | Tempatnya |
 |---|---|
 | Judul, paragraf, langkah-langkah, ayat, doa | Langsung di file `halaman-*.html` |
-| Naskah penjelasan (dibacakan suara otomatis) | `<p class="transcript-text">` di setiap halaman. Samakan dengan isi rekaman |
+| Naskah penjelasan (dibacakan suara otomatis) | `<p class="transcript-text">` di Halaman 15–16, 20, 22 (Halaman 4, 8, 12 sudah tanpa teks, sesuai revisi). Samakan dengan isi rekaman |
 | Soal kuis dan umpan baliknya | Blok `quiz-data` di Halaman 8 dan 20, dengan isian `judul`, `pertanyaan`, `pilihan`, `kunci`, `jikaBenar`, `jikaBelumTepat` (petunjuknya ada di atas blok itu) |
 | Doa yang dihafal | Baris bertanda `data-words` di Halaman 22 |
 | Pilihan lama tidur siang | `data-min="15"` dan seterusnya di Halaman 15–16 |
